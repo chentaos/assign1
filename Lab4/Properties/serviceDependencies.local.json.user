@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "mssql2": {
+      "restored": true,
+      "restoreTime": "2020-12-09T23:27:10.7318791Z"
+    },
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2020-10-24T08:37:07.123484Z"
+    }
+  },
+  "parameters": {
+    "mssql2.subscriptionId": {
+      "Type": "subscription",
+      "Value": "9b95367d-f108-4f02-853f-82d248493634"
+    },
+    "mssql2.resourceGroupName": {
+      "Type": "resourceGroup",
+      "Value": "Chentao"
+    }
+  }
+}

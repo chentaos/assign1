@@ -1,0 +1,46 @@
+﻿@model Lab4.Models.ViewModel.StudentMembershipViewModel
+
+    @{
+        ViewData["Title"] = "Edit";
+    }
+
+    <h1>Edit</h1>
+
+    <h2>Student</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <b>@Html.DisplayNameFor(model => Model.Student.FullName)</b> &nbsp;&nbsp;&nbsp;
+            @Html.DisplayFor(model => Model.Student.FullName)
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <table>
+                <tr>
+                    <td>
+                        <ul>
+                            @foreach (var item in Model.Memberships)
+                            {
+                                var shift = item.IsMember ? "Unregister" : "Register";
+                            <li>
+                                @Html.DisplayFor(modelItem => item.Title)
+                                <a asp-controller="Student" asp-action="Membership" asp-route-id=@Model.Student.ID asp-route-communityId=@item.CommunityId>@shift</a>                          
+                            </li>
+                                
+                            }
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

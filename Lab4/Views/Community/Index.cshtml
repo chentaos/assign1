@@ -1,0 +1,83 @@
+﻿@*@model IEnumerable<Lab4.Models.Community>*@
+
+@model Lab4.Models.ViewModel.CommunityViewModel
+
+@{
+    ViewData["Title"] = "Communities";
+}
+
+<h1>Communities</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => Model.Communities.ElementAt(0).Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => Model.Communities.ElementAt(0).Budget)
+            </th>
+            <th>
+                Operating
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Communities)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Budget)
+                </td>
+                <td>
+                    <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
+                    <a asp-controller="Advertisement" asp-action="Index" asp-route-id="@item.ID">Ads</a> |
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+@if (Model.CommunityMemberships != null)
+{
+    <h2>Members of the community</h2>
+    @if (Model.CommunityMemberships.Count()>0)
+    {
+    <table>
+        <tr>
+            <td>
+                <font style="font-weight: bold" color="red" face="Verdana">
+                    Name:
+                </font>
+               
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ol>
+                    @foreach (var item1 in Model.CommunityMemberships)
+                    {
+                        <li>@Html.DisplayFor(modelItem => item1.Student.FullName)</li>
+                    }
+                </ol>
+            </td>
+        </tr>
+    </table>
+    }
+    else
+    {
+        <h4>No membership exists</h4>
+    }
+}
+
+
